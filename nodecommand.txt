@@ -1,0 +1,1 @@
+podman run --replace -it --name node --network development -v $(pwd):/app:z -w /app -p 5000:5000 --entrypoint /bin/sh node:latest -c "npm run dev"

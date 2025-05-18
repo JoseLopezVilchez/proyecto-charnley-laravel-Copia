@@ -1,0 +1,1 @@
+podman run --replace -it --name laravel --network development -v ~/Desktop/charnley/proyecto-charnley-laravel:/var/www/html:z -w /var/www/html -p 8000:8000 --entrypoint /bin/sh bitnami/laravel -c "php artisan serve --host=0.0.0.0 --port=8000"
