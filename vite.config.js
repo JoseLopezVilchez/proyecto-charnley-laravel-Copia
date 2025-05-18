@@ -10,4 +10,11 @@ export default defineConfig({
         }),
         tailwindcss(),
     ],
+    server: {
+        host: '0.0.0.0',  // Allow connections from outside the container
+        port: 5000,  // Default Vite port, change it if necessary
+        hmr: {
+            host: 'localhost', // Important for hot module replacement to work properly
+        },
+    },
 });
