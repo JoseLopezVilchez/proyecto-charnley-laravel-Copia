@@ -75,3 +75,7 @@
 [x-cloak] {
     display: none;
 }
+
+* {
+  box-sizing: border-box;
+}
