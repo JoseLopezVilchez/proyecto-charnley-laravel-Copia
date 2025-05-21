@@ -1,4 +1,4 @@
-<div class="flex w-full max-h-[calc(100vh-200px)] overflow-hidden p-2">
+<div class="flex w-full overflow-hidden">
     <ul class="list bg-base-100 rounded-box shadow-md max-h-full overflow-y-auto">
   
         <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Chats activos</li>
