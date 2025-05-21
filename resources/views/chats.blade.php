@@ -1,12 +1,10 @@
 <x-app-layout>
-    <div class="flex flex-col justify-center items-center">
-        <div class="grid grid-cols-12 gap-4 w-full sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-5xl 2xl:max-w-7xl">
-            <div class="col-span-4">@livewire('chats-atendidos')</div>
+    <div class="max-h-full grid grid-cols-12 justify-center items-center">
+        <div class="col-span-3">@livewire('chats-atendidos')</div>
 
-            <div class="col-span-8">@livewire('chat', ['id_sala' => 1])</div>
-        </div>
+        <div class="col-span-6">@livewire('chat', ['id_sala' => 1])</div>
 
         <!-- Lista de imágenes por resolver (para añadirlas como nuevos chats) -->
-        @livewire('chats-por-atender')
+        <div class="col-span-3">@livewire('chats-por-atender')</div>
     </div>
 </x-app-layout>

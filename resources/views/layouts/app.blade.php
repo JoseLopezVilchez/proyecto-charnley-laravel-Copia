@@ -21,7 +21,7 @@
             @livewire('navigation-menu')
 
             <!-- Page Content -->
-            <main class="p-2 overflow-hidden">
+            <main class="p-2 max-h-screen overflow-hidden">
                 {{ $slot }}
             </main>
         </div>
