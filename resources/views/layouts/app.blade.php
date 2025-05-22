@@ -21,7 +21,7 @@
             @livewire('navigation-menu')
 
             <!-- Page Content -->
-            <main class="p-2 flex-1 max-h-full">
+            <main class="flex p-2 pb-8 flex-1 h-[calc(100%-6rem)] max-h-full">
                 {{ $slot }}
             </main>
         </div>

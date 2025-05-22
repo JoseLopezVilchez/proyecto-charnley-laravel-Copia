@@ -1,4 +1,4 @@
-<div class="flex w-full overflow-hidden">
+<div class="flex h-full overflow-hidden">
     <div class="carousel carousel-vertical bg-neutral rounded-box"> <!-- Tengo que ver exactamente qué clases pintan -->
         
         <!-- Inicio de placeholders -->
