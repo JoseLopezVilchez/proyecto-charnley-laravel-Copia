@@ -5,11 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
-/**
- * @author Jose Lopez Vilchez
- * 
- */
-class NavigationMenu extends Component
+class NavBar extends Component
 {
     public $links = [];
 
@@ -27,6 +23,6 @@ class NavigationMenu extends Component
 
     public function render()
     {
-        return view('livewire.navigation-menu');
+        return view('livewire.nav-bar');
     }
 }

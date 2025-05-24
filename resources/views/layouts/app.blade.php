@@ -18,7 +18,7 @@
     <body>
 
         <div class="h-screen max-h-screen flex flex-col">
-            @livewire('navigation-menu')
+            @livewire('nav-bar')
 
             <!-- Page Content -->
             <main class="flex p-2 pb-8 flex-1 h-[calc(100%-6rem)] max-h-full">
