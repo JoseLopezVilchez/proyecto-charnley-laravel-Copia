@@ -1,7 +1,6 @@
-<div class="flex h-full overflow-hidden">
+<div class="flex flex-col h-full">
+    <h3 class="p-4 pb-2 text-xs opacity-60 tracking-wide">Chats activos</h3>
     <ul class="list bg-base-100 rounded-box shadow-md max-h-full overflow-y-auto">
-  
-        <li class="p-4 pb-2 text-xs opacity-60 tracking-wide">Chats activos</li>
 
         <!-- Inicio de placeholders -->
         <li class="list-row">

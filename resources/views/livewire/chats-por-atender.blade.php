@@ -1,5 +1,6 @@
-<div class="flex h-full overflow-hidden">
-    <div class="carousel carousel-vertical bg-neutral rounded-box"> <!-- Tengo que ver exactamente qué clases pintan -->
+<div class="flex flex-col h-full">
+    <h3 class="p-4 pb-2 text-xs opacity-60 tracking-wide">Imágenes por atender</h3>
+    <div class="carousel carousel-vertical bg-neutral rounded-box overflow-y-auto"> <!-- Tengo que ver exactamente qué clases pintan -->
         
         <!-- Inicio de placeholders -->
         <div class="carousel-item">

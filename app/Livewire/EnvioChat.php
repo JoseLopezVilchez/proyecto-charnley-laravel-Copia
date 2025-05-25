@@ -23,6 +23,8 @@ class EnvioChat extends Component
             'content' => $this->mensaje,
             'state' => 0
         ]);
+
+        $this->mensaje = '';
     }
 
     public function render()
