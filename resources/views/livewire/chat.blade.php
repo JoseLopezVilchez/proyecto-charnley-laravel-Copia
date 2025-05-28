@@ -13,6 +13,7 @@
             </div>
         </div>
     </div>
+    <hr class="border-t border-gray-300 my-4" />
     <div class="flex flex-col flex-1 overflow-hidden mb-4">
         <div class="flex flex-col-reverse flex-1 overflow-y-auto">
             <!-- Inicio de placeholders -->

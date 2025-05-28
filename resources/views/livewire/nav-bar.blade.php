@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="navbar sticky top-0 z-10 bg-base-100">
+<nav x-data="{ open: false }" class="navbar sticky top-0 z-10 bg-base-100 mb-4">
     <div class="w-full flex justify-center">
         <div class="flex justify-between w-full sm:max-w-sm md:max-w-md lg:max-w-2xl xl:max-w-5xl 2xl:max-w-7xl">
             
