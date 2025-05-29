@@ -1,20 +1,60 @@
 <x-app-layout>
-    <div class="flex w-full h-full overflow-hidden">
+    <div class="flex w-full h-full overflow-hidden gap-4">
         <div class="flex flex-col w-1/2 h-full">
             <div class="flex flex-row">
-                <img src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" alt="" class="h-48 w-48">
-                <div class="flex flex-col space-between pl-4">
+                <img src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp" alt="" class="h-48 w-48 rounded-box">
+                <div class="flex flex-col justify-between pl-4 h-full w-full">
                     <div>
                         <h2 class="text-lg"><span class="font-bold">Nombre:</span> <span>Nombre Apellido</span></h2>
                         <h3><span class="font-bold">Edad:</span> <span>00</span></h3>
+                        <h3><span class="font-bold">Email:</span> <span>correoelectronico@correo.com</span></h3>
+                        <h3><span class="font-bold">Rol:</span> <span>Administradoroalgoasi</span></h3>
                     </div>
-                    <div> <!-- Botones - debería tener 'dar de baja', pero qué más? -->
-
+                    <div class="join w-full justify-end"> <!-- Botones - debería tener 'dar de baja', pero qué más? -->
+                        <button class="btn btn-soft btn-error join-item">Dar de baja</button>
                     </div>
                 </div>
             </div>
             <hr class="border-t border-gray-300 my-4" />
-            
+            <form action="">
+                <fieldset class="fieldset bg-base-200 border-base-300 rounded-box border p-4">
+                    <label class="input validator w-full">
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </g>
+                        </svg>
+                        <input type="text" required placeholder="Nombre y apellidos" pattern="[A-Za-z][A-Za-z]*" minlength="2" maxlength="80" title="Solo letras"/>
+                    </label>
+                    <label class="input validator w-full">
+                        <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </g>
+                        </svg>
+                        <input type="email" placeholder="email@sitio.es" required />
+                    </label>
+                    <label class="select w-full">
+                        <span class="label">Rol</span>
+                        <select class="select">
+                            <option disabled selected>Seleccione un rol</option>
+                            <option>Usuario</option>
+                            <option>Cuidador</option>
+                            <option>Soporte</option>
+                            <option>Técnico</option>
+                            <option>Administrador</option>
+                            <option>Superadministrador</option>
+                        </select>
+                    </label>
+                    <label class="input w-full">
+                        <span class="label">Fecha de nacimiento</span>
+                        <input type="date"/>
+                    </label>
+                    <button class="btn btn-neutral mt-4">Actualizar</button>
+                </fieldset>
+            </form>
         </div>
         <div class="w-1/2 h-full overflow-y-auto">
             <table class="table table-zebra">
