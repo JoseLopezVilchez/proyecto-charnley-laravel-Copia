@@ -15,6 +15,7 @@ class Chat extends Component
 {
     public $id_sala = 0;
     public $sala;
+    public $activo = true;
 
     public function mount()
     {

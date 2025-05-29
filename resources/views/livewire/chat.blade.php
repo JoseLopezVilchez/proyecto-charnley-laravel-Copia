@@ -59,5 +59,7 @@
             @endforeach--}}
         </div>
     </div>
-    @livewire('envio-chat', ['id_sala' => "$id_sala"])
+    @if ($activo)
+        @livewire('envio-chat', ['id_sala' => "$id_sala"])
+    @endif
 </div>
