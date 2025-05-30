@@ -12,7 +12,7 @@ class NavBar extends Component
     public function mount()
     {
         if (Auth::user()->role > 3) {
-            $this->links = ['chats', 'usuarios', 'reportes', 'bugs'];
+            $this->links = ['chats', 'usuarios', 'reportes'];
             
         } elseif (Auth::user()->role > 2) {
             $this->links = ['chats'];

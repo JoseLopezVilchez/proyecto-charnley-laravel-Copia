@@ -19,6 +19,7 @@ class SupportController extends Controller
                 'links' => ['chats']
             ]);
         } else {
+            abort(403);
             return view('denegado');
         }
     }
@@ -30,6 +31,7 @@ class SupportController extends Controller
                 'links' => ['chats', 'usuarios', 'reportes', 'bugs']
             ]);
         } else {
+            abort(403);
             return view('denegado');
         }
     }
@@ -41,17 +43,7 @@ class SupportController extends Controller
                 'links' => ['chats', 'usuarios', 'reportes', 'bugs']
             ]);
         } else {
-            return view('denegado');
-        }
-    }
-
-    public function bugs(): View
-    {
-        if (Auth::user()->role > 3) {
-            return view('bugs', [
-                'links' => ['chats', 'usuarios', 'reportes', 'bugs']
-            ]);
-        } else {
+            abort(403);
             return view('denegado');
         }
     }

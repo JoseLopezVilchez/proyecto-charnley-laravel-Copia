@@ -13,7 +13,6 @@ Route::middleware([
     Route::get('/chats', [SupportController::class, 'chats'])->name('chats');
     Route::get('/usuarios', [SupportController::class, 'usuarios'])->name('usuarios');
     Route::get('/reportes', [SupportController::class, 'reportes'])->name('reportes');
-    Route::get('/bugs', [SupportController::class, 'bugs'])->name('bugs');
 });
 
 // Swagger UI route
