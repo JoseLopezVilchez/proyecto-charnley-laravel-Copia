@@ -1,4 +1,4 @@
-<div class="flex flex-col h-full p-2"> <!-- Chat abierto -->
+<div class="flex flex-col h-full p-4 border rounded-box border-base-300 bg-base-200"> <!-- Chat abierto -->
     <div class="flex flex-row mb-4"> <!-- Imagen que se envió para el inicio del chat, nombre de paciente, y opciones (concluir chat, reportar, blah blah) -->
         {{-- <div class="" style="background-image: url('{{$sala->imagen()->imagenOriginal()}}')"> --}} <!-- Imagen por la que se abrió el chat, podría cambiarla por un img o lo que sea -->
         <div class="h-48 w-48 bg-no-repeat rounded-box" style="background-image: url('https://img.daisyui.com/images/profile/demo/kenobee@192.webp')"></div> <!-- placeholder hasta tener imágenes -->
@@ -13,9 +13,9 @@
             </div>
         </div>
     </div>
-    <hr class="border-t border-gray-300 my-4" />
-    <div class="flex flex-col flex-1 overflow-hidden mb-4">
-        <div class="flex flex-col-reverse flex-1 overflow-y-auto">
+    <hr class="border-t border-base-300 my-4" />
+    <div class="flex flex-col flex-1 overflow-hidden">
+        <div class="flex flex-col-reverse flex-1 p-4 overflow-y-auto border rounded-box border-base-300 bg-base-100">
             <!-- Inicio de placeholders -->
             <div class="chat chat-start">
                 <div class="chat-image avatar">

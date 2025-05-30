@@ -1,3 +1,3 @@
 <div>
-    No tienes permiso puto
+    No tienes permiso
 </div>

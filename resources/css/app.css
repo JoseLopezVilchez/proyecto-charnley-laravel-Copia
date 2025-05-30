@@ -1,15 +1,20 @@
 @import "tailwindcss";
 @source "../views";
-@plugin "daisyui" {
+
+/*@plugin "daisyui" {
     themes: light --default, dark --prefersdark;
+}*/
+@plugin "daisyui" {
+    themes: charnley --default, charnleydark --prefersdark;
 }
+
 @plugin "daisyui/theme" {
   name: "charnley";
   default: true;
   prefersdark: false;
   color-scheme: "light";
   --color-base-100: oklch(98% 0.003 247.858);
-  --color-base-200: oklch(98% 0.003 247.858);
+  --color-base-200: oklch(97% 0.001 106.424);
   --color-base-300: oklch(90% 0.058 230.902);
   --color-base-content: oklch(37% 0.146 265.522);
   --color-primary: oklch(50% 0.134 242.749);
@@ -37,14 +42,15 @@
   --depth: 0;
   --noise: 0;
 }
+
 @plugin "daisyui/theme" {
-  name: "charnley-dark";
+  name: "charnleydark";
   default: false;
-  prefersdark: false;
+  prefersdark: true;
   color-scheme: "dark";
-  --color-base-100: oklch(12% 0.042 264.695);
+  --color-base-100: oklch(13% 0.028 261.692);
   --color-base-200: oklch(12% 0.042 264.695);
-  --color-base-300: oklch(20% 0.042 265.755);
+  --color-base-300: oklch(27% 0.041 260.031);
   --color-base-content: oklch(98% 0.003 247.858);
   --color-primary: oklch(50% 0.134 242.749);
   --color-primary-content: oklch(98% 0.018 155.826);

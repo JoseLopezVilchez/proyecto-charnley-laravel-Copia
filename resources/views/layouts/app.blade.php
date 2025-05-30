@@ -17,11 +17,11 @@
     </head>
     <body>
 
-        <div class="h-screen max-h-screen flex flex-col">
+        <div class="h-screen max-h-screen flex flex-col bg-base-100">
             @livewire('nav-bar')
 
             <!-- Page Content -->
-            <main class="flex p-2 pb-8 flex-1 h-[calc(100%-6rem)] max-h-full">
+            <main class="flex px-4 py-8 flex-1 h-[calc(100%-6rem)] max-h-full">
                 {{ $slot }}
             </main>
         </div>
