@@ -4,10 +4,10 @@
             @livewire('chat', ['id_sala' => 1, 'activo' => false])
         </div>
         <div class="w-1/2 h-full overflow-y-auto">
-            <ul class="list rounded-box">
+            <ul class="list shadow-sm rounded-box">
 
                 <!-- Inicio de placeholders -->
-                <li class="card p-4 gap-4 border rounded-box border-base-300 bg-base-200">
+                <li class="list-row card p-4 gap-4 border rounded-box border-base-300 bg-base-200">
                     <div class="flex justify-between">
                         <div class="flex gap-4">
                             <img class="w-24 rounded-full" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fv2%2Fresize%3Afit%3A1358%2F1*Nt39X5uC-FW8A94OtpgbJg.jpeg&f=1&nofb=1&ipt=c266802ed9468629b70de37a3de9466730f2ddc7920ff71810bf882d846bd2db">
@@ -20,7 +20,6 @@
                         <p>Este tío me ha mandado cosas inapropiadas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam veritatis saepe sit, nam voluptas aspernatur vero, quam beatae dolores, eligendi iusto voluptatum consectetur illo laborum placeat itaque. Fugit, corrupti distinctio!</p>
                     </div>
                 </li>
-                <hr class="border-t my-4 border-base-300" />
                 <!-- Fin de placeholders -->
             </ul>
         </div>
