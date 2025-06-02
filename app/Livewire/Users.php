@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
+use Illuminate\Support\Facades\Hash;
 
 class Users extends Component
 {
@@ -13,10 +14,10 @@ class Users extends Component
     public ?User $usuarioSeleccionado;
     public const ROLES = ['Usuario', 'Cuidador', 'Soporte', 'Admin', 'Superadministrador', 'Father'];
 
-    public ?string $nombre;
-    public ?string $email;
-    public ?int $rol;
-    public ?string $fecha_nacimiento;
+    public ?string $nombre = '';
+    public ?string $email = '';
+    public ?int $rol = 1;
+    public ?string $fecha_nacimiento = '';
 
     public function mount()
     {
@@ -55,10 +56,10 @@ class Users extends Component
     public function limpiarSeleccion ()
     {
         $this->usuarioSeleccionado = null;
-        $this->nombre = null;
-        $this->email = null;
-        $this->rol = null;
-        $this->fecha_nacimiento = null;
+        $this->nombre = '';
+        $this->email = '';
+        $this->rol = 1;
+        $this->fecha_nacimiento = '';
     }
 
     public function procesarFormulario ()
@@ -74,15 +75,16 @@ class Users extends Component
             $this->usuarioSeleccionado->update([
                 'name' => $this->nombre,
                 'email' => $this->email,
-                'role' => $this->rol,
+                'role' => (int) $this->rol,
                 'birthdate' => $this->fecha_nacimiento,
             ]);
         } else {
             User::create([
                 'name' => $this->nombre,
                 'email' => $this->email,
-                'role' => $this->rol,
+                'role' => (int) $this->rol,
                 'birthdate' => $this->fecha_nacimiento,
+                'password' => Hash::make('password')
             ]);
         }
 
