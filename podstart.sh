@@ -3,6 +3,11 @@
 # Ruta absoluta del proyecto
 REPO_PATH=$(pwd)
 
+if [ ! -f "$REPO_PATH/.env" ]; then
+    echo "Creando archivo .env desde .env.example..."
+    cp "$REPO_PATH/.env.podman" "$REPO_PATH/.env"
+fi
+
 # Nombre del archivo YAML original
 TEMPLATE="pod.yaml"
 
