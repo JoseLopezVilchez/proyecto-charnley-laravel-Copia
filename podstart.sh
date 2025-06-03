@@ -17,5 +17,8 @@ TMP_YAML="/tmp/pod_patched.yaml"
 # Reemplazar "/changeme" por la ruta real
 sed "s|/changeme|$REPO_PATH|g" "$TEMPLATE" > "$TMP_YAML"
 
+chmod -R a+rx "$REPO_PATH"
+chown -R 1000:1000 "$REPO_PATH"
+
 # Crear pod desde el YAML modificado
 podman play kube "$TMP_YAML"
