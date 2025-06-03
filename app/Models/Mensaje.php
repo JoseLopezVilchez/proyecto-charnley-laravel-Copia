@@ -17,6 +17,6 @@ class Mensaje extends Model
     }
 
     public function sender(){
-        return $this->belongsTo(User::class, 'id_sender');
+        return $this->belongsTo(User::class, 'id_sender')->withTrashed();
     }
 }

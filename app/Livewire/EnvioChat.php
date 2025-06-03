@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Mensaje;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Reactive;
 
 /**
  * @author Jose Lopez Vilchez
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
  */
 class EnvioChat extends Component
 {
+    #[Reactive]
     public $id_sala = 0;
     public $mensaje = '';
 

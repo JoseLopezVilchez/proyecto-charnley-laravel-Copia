@@ -16,7 +16,7 @@ class Sala extends Model
 
     public function paciente(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_paciente');
+        return $this->belongsTo(User::class, 'id_paciente')->withTrashed();
     }
 
     public function mensajes() {

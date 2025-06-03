@@ -4,6 +4,8 @@ namespace App\Livewire;
 
 use Livewire\Component;
 use App\Http\Helpers\JoseHelper;
+use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On; 
 
 /**
  * @author Jose Lopez Vilchez
@@ -13,17 +15,33 @@ use App\Http\Helpers\JoseHelper;
  */
 class Chat extends Component
 {
-    public $id_sala = 0;
+    public $id_sala;
     public $sala;
     public $activo = true;
+    public $id_visor;
 
-    public function mount()
+    public function mount(int $id_sala = 0, bool $activo)
     {
-        $this->sala = JoseHelper::sala($this->id_sala);
+        $this->id_sala = $id_sala;
+        if ($this->id_sala > 0) {
+            $this->sala = JoseHelper::sala($this->id_sala);
+        }
+
+        $this->activo = $activo;
+
+        $this->id_visor = Auth::id();
     }
 
     public function render()
     {
-        return view('livewire.chat');
+        return view('livewire.chat', [
+            'id_sala' => $this->id_sala
+        ]);
+    }
+
+    #[On('reporte-seleccionado')]
+    public function updatedIdSala($id)
+    {
+        $this->mount($id, false);
     }
 }
