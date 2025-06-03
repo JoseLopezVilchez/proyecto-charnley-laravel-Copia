@@ -34,7 +34,7 @@
             <img class="size-10 rounded-box" src="https://img.daisyui.com/images/profile/demo/1@94.webp"/>
             <div>
                 <div class="mb-2">
-                    <strong>{{$sala['sala']->paciente()->name}}</strong>
+                    <strong>{{$sala['sala']->paciente->name}}</strong>
                     <sub class="text-xs uppercase opacity-60">{{$sala['sala']->created_at}}</sub>
                 </div>
                 <div>
