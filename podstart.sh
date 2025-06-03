@@ -4,7 +4,7 @@
 REPO_PATH=$(pwd)
 
 if [ ! -f "$REPO_PATH/.env" ]; then
-    echo "Creando archivo .env desde .env.example..."
+    echo "Creando archivo .env desde .env.podman..."
     cp "$REPO_PATH/.env.podman" "$REPO_PATH/.env"
 fi
 
