@@ -37,6 +37,6 @@ class EnvioChat extends Component
     #[On('sala-seleccionada')]
     public function updatedIdSala($id)
     {
-        $this->mount($id, false);
+        $this->id_sala = $id;
     }
 }

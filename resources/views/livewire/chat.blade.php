@@ -2,13 +2,18 @@
     <div class="flex flex-row mb-4"> <!-- Imagen que se envió para el inicio del chat, nombre de paciente, y opciones (concluir chat, reportar, blah blah) -->
         {{-- <div class="" style="background-image: url('{{$sala->imagen()->imagenOriginal()}}')"> --}} <!-- Imagen por la que se abrió el chat, podría cambiarla por un img o lo que sea -->
         <div class="h-48 w-48 bg-no-repeat bg-center bg-cover rounded-box" style="background-image: url('{{ !empty($sala?->imagen?->url) ? $sala?->imagen?->url : 'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.vectorstock.com%2Fi%2F500p%2F77%2F30%2Fdefault-avatar-profile-icon-grey-photo-placeholder-vector-17317730.jpg&f=1&nofb=1&ipt=fc9287830db7da060a522537c7eb571256c985b0466858831a17eabd3af95060'}}')"></div>
-        <div class="flex flex-col space-between pl-4">
+        <div class="flex flex-col flex-1 justify-between pl-4">
             <div> <!-- Nombre de usuario y edad -->
                 <h2 class="text-lg"><span class="font-bold">Nombre:</span> <span>{{$sala?->paciente?->name ?? ''}}</span></h2>
                 <h3><span class="font-bold">Edad:</span> <span>{{ (new DateTime($sala?->paciente?->birthdate))->diff(new DateTime())->y }}</span></h3>
             </div>
-            <div> <!-- Botones - debería tener concluír chat y reportar, pero qué más? -->
-
+            <div class="inline-flex w-full justify-end">
+                @if (request()->routeIs('chats'))
+                    <button wire:click="" class="btn btn-soft btn-warning">Reportar</button>
+                    <button wire:click="" class="btn btn-soft btn-success">Terminar</button>
+                @else
+                    <button wire:click="" class="btn btn-soft btn-error">Expulsar</button>
+                @endif
             </div>
         </div>
     </div>

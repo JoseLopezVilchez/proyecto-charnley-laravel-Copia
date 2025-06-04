@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Http\Helpers\JoseHelper;
+use App\Models\Sala;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On; 
 
@@ -24,7 +24,7 @@ class Chat extends Component
     {
         $this->id_sala = $id_sala;
         if ($this->id_sala > 0) {
-            $this->sala = JoseHelper::sala($this->id_sala);
+            $this->sala = Sala::where('id', $this->id_sala)->first();
         }
 
         $this->activo = $activo;
@@ -43,12 +43,27 @@ class Chat extends Component
     #[On('sala-seleccionada')]
     public function updatedIdSala($id)
     {
-        $this->mount($id, false);
+        $this->mount($id, $this->activo);
     }
 
     #[On('mensaje-enviado')]
     public function mensajeEnviado ()
     {
-        $this->mount($this->id_sala, true);
+        $this->mount($this->id_sala, $this->activo);
+    }
+
+    public function reportar ()
+    {
+        
+    }
+
+    public function terminar ()
+    {
+
+    }
+
+    public function expulsar ()
+    {
+
     }
 }

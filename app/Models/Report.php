@@ -3,9 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Report extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = ['id_emisor', 'id_usuario', 'descripcion', 'id_imagen', 'id_sala'];
 
     public function emisor()

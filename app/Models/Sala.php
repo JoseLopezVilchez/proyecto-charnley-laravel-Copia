@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Sala extends Model
 {
+    use SoftDeletes;
+    
     protected $fillable = ['id_img_asociada', 'id_paciente'];
 
     public function imagen(): BelongsTo
@@ -25,5 +28,10 @@ class Sala extends Model
 
     public function usersSoporte(){
         return $this->belongsToMany(User::class, 'sala_user', 'sala_id', 'user_id');
+    }
+
+    public function ultimoMensaje()
+    {
+        return $this->hasOne(Mensaje::class, 'id_sala')->latestOfMany();
     }
 }
