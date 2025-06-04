@@ -35,6 +35,9 @@ spec:
       volumeMounts:
         - mountPath: /app
           name: volumen
+      securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
       command: ["/bin/sh"]
       args:
         - -c
@@ -55,6 +58,9 @@ spec:
       volumeMounts:
         - mountPath: /app
           name: volumen
+      securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
       command: ["/bin/sh"]
       args:
         - -c
