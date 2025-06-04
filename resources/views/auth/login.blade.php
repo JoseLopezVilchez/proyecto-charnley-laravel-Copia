@@ -35,21 +35,21 @@
                 </label>
             </div>
 
-            <div class="block mt-4">
+            {{--<div class="block mt-4">
                 <fieldset class="fieldset">
                     <label class="label">
                         <input type="checkbox" id="remember_me" name="remember" checked="checked" class="checkbox" />
                         {{ __('Remember me') }}
                     </label>
                 </fieldset>
-            </div>
+            </div>--}}
 
             <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
+                {{--@if (Route::has('password.request'))
                     <a class="link" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
-                @endif
+                @endif--}}
                 <button type="submit" class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">{{ __('Log in') }}</button>
             </div>
         </form>
