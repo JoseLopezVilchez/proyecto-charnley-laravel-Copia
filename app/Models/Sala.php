@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Report;
 
 class Sala extends Model
 {
@@ -33,5 +34,10 @@ class Sala extends Model
     public function ultimoMensaje()
     {
         return $this->hasOne(Mensaje::class, 'id_sala')->latestOfMany();
+    }
+
+    public function reportes()
+    {
+        return $this->hasMany(Report::class, 'id_sala');
     }
 }

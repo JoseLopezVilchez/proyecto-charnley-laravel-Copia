@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Models\Report;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
+use Livewire\Attributes\On;
 
 class Reports extends Component
 {
@@ -26,5 +27,11 @@ class Reports extends Component
     {
         $this->reporteSeleccionado = $this->listado->firstWhere('id', $id);
         $this->dispatch('reporte-seleccionado', id: $this->reporteSeleccionado?->sala?->id);
+    }
+
+    #[On('datachange')]
+    public function datachange ()
+    {
+        $this->mount();
     }
 }

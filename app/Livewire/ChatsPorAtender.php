@@ -7,6 +7,7 @@ use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
 use App\Models\Sala;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 
 /**
  * @author Jose Lopez Vilchez
@@ -34,5 +35,11 @@ class ChatsPorAtender extends Component
     {
         Sala::find($id)->usersSoporte()->attach(Auth::user());
         $this->dispatch('nueva-sala');
+    }
+
+    #[On('datachange')]
+    public function datachange ()
+    {
+        $this->mount();
     }
 }

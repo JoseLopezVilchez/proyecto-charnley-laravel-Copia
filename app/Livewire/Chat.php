@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\Report;
 use Livewire\Component;
 use App\Models\Sala;
 use Illuminate\Support\Facades\Auth;
@@ -19,12 +20,13 @@ class Chat extends Component
     public $sala;
     public $activo;
     public $id_visor;
+    public $mensajeReporte = '';
 
     public function mount(int $id_sala = 0, bool $activo = true)
     {
         $this->id_sala = $id_sala;
         if ($this->id_sala > 0) {
-            $this->sala = Sala::where('id', $this->id_sala)->first();
+            $this->sala = Sala::withTrashed()->where('id', $this->id_sala)->first();
         }
 
         $this->activo = $activo;
@@ -54,16 +56,40 @@ class Chat extends Component
 
     public function reportar ()
     {
-        
+        Report::create([
+            'id_emisor' => Auth::user()->id,
+            'id_usuario' => $this->sala->paciente->id,
+            'descripcion' => $this->mensajeReporte,
+            'id_imagen' => $this->sala->imagen->id,
+            'id_sala' => $this->id_sala
+        ]);
+        $this->dispatch('datachange');
     }
 
     public function terminar ()
     {
+        $this->sala->delete();
+        $this->dispatch('datachange');
+    }
 
+    public function descartar ()
+    {
+        $this->sala->restore();
+        $this->sala->reportes()->delete();
+        $this->dispatch('datachange');
     }
 
     public function expulsar ()
     {
+        $this->sala->paciente->chatrooms()->delete();
+        $this->sala->paciente->delete();
+        $this->sala->reportes()->delete();
+        $this->dispatch('datachange');
+    }
 
+    #[On('datachange')]
+    public function datachange ()
+    {
+        $this->mount(0, $this->activo);
     }
 }

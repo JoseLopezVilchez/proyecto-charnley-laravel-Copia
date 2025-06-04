@@ -7,12 +7,13 @@
                 <h2 class="text-lg"><span class="font-bold">Nombre:</span> <span>{{$sala?->paciente?->name ?? ''}}</span></h2>
                 <h3><span class="font-bold">Edad:</span> <span>{{ (new DateTime($sala?->paciente?->birthdate))->diff(new DateTime())->y }}</span></h3>
             </div>
-            <div class="inline-flex w-full justify-end">
-                @if (request()->routeIs('chats'))
-                    <button wire:click="" class="btn btn-soft btn-warning">Reportar</button>
-                    <button wire:click="" class="btn btn-soft btn-success">Terminar</button>
+            <div class="inline-flex w-full gap-4 justify-end">
+                @if ($activo)
+                    <button onclick="reportar.showModal()" class="btn btn-soft btn-warning">Reportar</button>
+                    <button onclick="terminar.showModal()" class="btn btn-soft btn-success">Terminar</button>
                 @else
-                    <button wire:click="" class="btn btn-soft btn-error">Expulsar</button>
+                    <button onclick="descartar.showModal()" class="btn btn-soft">Descartar</button>
+                    <button onclick="expulsar.showModal()" class="btn btn-soft btn-error">Expulsar</button>
                 @endif
             </div>
         </div>
@@ -41,4 +42,77 @@
     @if ($activo)
         @livewire('envio-chat', ['id_sala' => "$id_sala"])
     @endif
+    <dialog id="reportar" class="modal"> <!-- Para reportar -->
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Reporte</h3>
+            <p class="py-4">Introduzca las razones del reporte</p>
+            <div class="modal-action justify-center p-4">
+                <form method="dialog" class="w-full flex flex-col gap-4">
+                    <textarea wire:model="mensajeReporte" class="textarea w-full" placeholder="Razones"></textarea>
+                    <div class="w-full flex gap-4 justify-end">
+                        <button class="btn btn-soft">Cancelar</button>
+                        <button wire:click="reportar()" class="btn btn-soft btn-error">Reportar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog> <!-- -------------------------------------------------------- -->
+    <dialog id="terminar" class="modal"> <!-- Para terminar chat -->
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Terminar chat</h3>
+            <p class="py-4">¿Quiere terminar el chat? ¿Cree que el usuario no tiene más preocupaciones que necesiten ser aclaradas?</p>
+            <div class="modal-action justify-center p-4">
+                <form method="dialog" class="w-full flex flex-col gap-4">
+                    <div class="w-full flex gap-4 justify-end">
+                        <button class="btn btn-soft">Cancelar</button>
+                        <button wire:click="terminar()" class="btn btn-soft btn-success">Terminar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog> <!-- -------------------------------------------- -->
+    <dialog id="descartar" class="modal"> <!-- Para descartar reporte -->
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Descartar reporte</h3>
+            <p class="py-4">¿Quiere descartar el reporte? El chat asociado será recuperado</p>
+            <div class="modal-action justify-center p-4">
+                <form method="dialog" class="w-full flex flex-col gap-4">
+                    <div class="w-full flex gap-4 justify-end">
+                        <button class="btn btn-soft">Cancelar</button>
+                        <button wire:click="descartar()" class="btn btn-soft btn-success">Descartar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog> <!-- -------------------------------------------- -->
+    <dialog id="expulsar" class="modal"> <!-- Para expulsar usuario -->
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Expulsar</h3>
+            <p class="py-4">¿Está seguro de que desea expulsar a este usuario? Tenga en cuenta que lidia con gente de un colectivo vulnerable. Debe tener una buena razón para tomar esta decisión</p>
+            <div class="modal-action justify-center p-4">
+                <form method="dialog" class="w-full flex flex-col gap-4">
+                    <div class="w-full flex gap-4 justify-end">
+                        <button class="btn btn-soft">Cancelar</button>
+                        <button wire:click="expulsar()" class="btn btn-soft btn-error">Sí, estoy seguro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog> <!-- ----------------------------------------------------------- -->
 </div>

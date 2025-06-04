@@ -14,7 +14,7 @@
                         <h3><span class="font-bold">Rol:</span> <span>{{ !empty($usuarioSeleccionado?->role) ? $ROLES[$usuarioSeleccionado->role -1] : '' }}</span></h3>
                     </div>
                     <div class="join w-full justify-end">
-                        <button wire:click="bajaUsuario({{ $usuarioSeleccionado?->id }})" class="btn btn-soft btn-error join-item {{empty($usuarioSeleccionado) ? 'btn-disabled' : ''}}">Dar de baja</button>
+                        <button onclick="baja.showModal()" class="btn btn-soft btn-error join-item {{empty($usuarioSeleccionado) ? 'btn-disabled' : ''}}">Dar de baja</button>
                     </div>
                 </div>
             </div>
@@ -86,4 +86,22 @@
             </tbody>
         </table>
     </div>
+    <dialog id="baja" class="modal"> <!-- Para dar de baja a usuario -->
+        <div class="modal-box">
+            <h3 class="text-lg font-bold">Dar de baja</h3>
+            <p class="py-4">¿Está seguro de que desea dar de baja a este usuario?</p>
+            <div class="modal-action justify-center p-4">
+                <form method="dialog" class="w-full flex flex-col gap-4">
+                    <div class="w-full flex gap-4 justify-end">
+                        <button class="btn btn-soft">Cancelar</button>
+                        <button wire:click="bajaUsuario({{ $usuarioSeleccionado?->id }})" class="btn btn-soft btn-error">Sí, estoy seguro</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <form method="dialog" class="modal-backdrop">
+            <button>close</button>
+        </form>
+    </dialog> <!-- ----------------------------------------------------------- -->
 </div>

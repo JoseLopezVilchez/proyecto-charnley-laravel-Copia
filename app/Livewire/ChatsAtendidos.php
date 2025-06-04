@@ -33,7 +33,8 @@ class ChatsAtendidos extends Component
     }
 
     #[On('nueva-sala')]
-    public function nuevaSala ()
+    #[On('datachange')]
+    public function datachange ()
     {
         $this->mount();
     }

@@ -6,6 +6,7 @@ use App\Models\Sala;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 
 class ChatView extends Component
 {
@@ -26,5 +27,11 @@ class ChatView extends Component
     public function render()
     {
         return view('livewire.chat-view');
+    }
+
+    #[On('datachange')]
+    public function datachange ()
+    {
+        $this->mount();
     }
 }
