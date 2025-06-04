@@ -5,7 +5,7 @@ namespace App\Livewire;
 use App\Models\Mensaje;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Reactive;
+use Livewire\Attributes\On; 
 
 /**
  * @author Jose Lopez Vilchez
@@ -13,7 +13,6 @@ use Livewire\Attributes\Reactive;
  */
 class EnvioChat extends Component
 {
-    #[Reactive]
     public $id_sala = 0;
     public $mensaje = '';
 
@@ -27,10 +26,17 @@ class EnvioChat extends Component
         ]);
 
         $this->mensaje = '';
+        $this->dispatch('mensaje-enviado');
     }
 
     public function render()
     {
         return view('livewire.envio-chat');
+    }
+
+    #[On('sala-seleccionada')]
+    public function updatedIdSala($id)
+    {
+        $this->mount($id, false);
     }
 }

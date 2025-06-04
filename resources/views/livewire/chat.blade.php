@@ -16,7 +16,7 @@
     <div class="flex flex-col flex-1 overflow-hidden">
         <div class="flex flex-col-reverse flex-1 p-4 overflow-y-auto border rounded-box border-base-300 bg-base-100">
             @if (count($sala?->mensajes ?? []) > 0)
-                @foreach ($sala->mensajes as $mensaje)
+                @foreach ($sala->mensajes->reverse() as $mensaje)
                     <div class="chat {{$mensaje->id_sender == $id_visor ? 'chat-end' : 'chat-start'}}">
                         <div class="chat-image avatar">
                             <div class="w-10 rounded-full">

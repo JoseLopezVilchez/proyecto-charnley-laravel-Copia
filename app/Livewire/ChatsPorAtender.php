@@ -4,7 +4,9 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
-use App\Http\Helpers\JoseHelper;
+use Illuminate\Database\Eloquent\Collection;
+use App\Models\Sala;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @author Jose Lopez Vilchez
@@ -14,15 +16,23 @@ use App\Http\Helpers\JoseHelper;
  */
 class ChatsPorAtender extends Component
 {
-    public $por_atender;
+    public Collection $listado;
 
     public function mount()
     {
-        $this->por_atender = JoseHelper::listadoDeSalasSinAtender();
+        $this->listado = Sala::all()->filter(function (Sala $sala) {
+            return $sala->usersSoporte->isEmpty();
+        });
     }
 
     public function render()
     {
         return view('livewire.chats-por-atender');
+    }
+
+    public function atenderSala ($id)
+    {
+        Sala::find($id)->usersSoporte()->attach(Auth::user());
+        $this->dispatch('nueva-sala');
     }
 }

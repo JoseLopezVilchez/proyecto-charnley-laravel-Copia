@@ -17,10 +17,10 @@ class Chat extends Component
 {
     public $id_sala;
     public $sala;
-    public $activo = true;
+    public $activo;
     public $id_visor;
 
-    public function mount(int $id_sala = 0, bool $activo)
+    public function mount(int $id_sala = 0, bool $activo = true)
     {
         $this->id_sala = $id_sala;
         if ($this->id_sala > 0) {
@@ -40,8 +40,15 @@ class Chat extends Component
     }
 
     #[On('reporte-seleccionado')]
+    #[On('sala-seleccionada')]
     public function updatedIdSala($id)
     {
         $this->mount($id, false);
+    }
+
+    #[On('mensaje-enviado')]
+    public function mensajeEnviado ()
+    {
+        $this->mount($this->id_sala, true);
     }
 }

@@ -2,17 +2,16 @@
 
 namespace App\Livewire;
 
+use App\Models\Sala;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Sala;
-use Livewire\Attributes\On;
 
-class ChatsAtendidos extends Component
+class ChatView extends Component
 {
     public Collection $listado;
+    public ?Sala $salaSeleccionada;
 
-    #[On('nueva-sala')]
     public function mount()
     {
         if (Auth::user()->role > 3) {
@@ -20,14 +19,12 @@ class ChatsAtendidos extends Component
         } else {
             $this->listado = Auth::user()->salasSoporte;
         }
+        
+        $this->salaSeleccionada = $this->listado->first();
     }
 
     public function render()
     {
-        return view('livewire.chats-atendidos');
-    }
-
-    public function selectSala ($id) {
-        $this->dispatch('sala-seleccionada', id: $id);
+        return view('livewire.chat-view');
     }
 }

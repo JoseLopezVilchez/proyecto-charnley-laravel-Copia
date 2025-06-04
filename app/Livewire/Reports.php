@@ -5,7 +5,6 @@ namespace App\Livewire;
 use App\Models\Report;
 use Livewire\Component;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\Auth;
 
 class Reports extends Component
 {
@@ -14,7 +13,7 @@ class Reports extends Component
 
     public function mount()
     {
-        $this->listado = Report::all()->except(Auth::id());
+        $this->listado = Report::all();
         $this->reporteSeleccionado = $this->listado->first();
     }
 
