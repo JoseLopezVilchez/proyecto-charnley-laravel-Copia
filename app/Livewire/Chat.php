@@ -56,34 +56,37 @@ class Chat extends Component
 
     public function reportar ()
     {
-        Report::create([
-            'id_emisor' => Auth::user()->id,
-            'id_usuario' => $this->sala->paciente->id,
-            'descripcion' => $this->mensajeReporte,
-            'id_imagen' => $this->sala->imagen->id,
-            'id_sala' => $this->id_sala
-        ]);
-        $this->dispatch('datachange');
+        if (!empty($this->sala)) {
+            Report::create([
+                'id_emisor' => Auth::user()->id,
+                'id_usuario' => $this->sala->paciente->id,
+                'descripcion' => $this->mensajeReporte ?? '',
+                'id_imagen' => $this->sala->imagen->id,
+                'id_sala' => $this->sala->id
+            ]);
+
+            $this->dispatch('datachange');
+        }
     }
 
     public function terminar ()
     {
-        $this->sala->delete();
+        $this->sala?->delete();
         $this->dispatch('datachange');
     }
 
     public function descartar ()
     {
-        $this->sala->restore();
-        $this->sala->reportes()->delete();
+        $this->sala?->restore();
+        $this->sala?->reportes()->delete();
         $this->dispatch('datachange');
     }
 
     public function expulsar ()
     {
-        $this->sala->paciente->chatrooms()->delete();
-        $this->sala->paciente->delete();
-        $this->sala->reportes()->delete();
+        $this->sala?->paciente?->chatrooms()->delete();
+        $this->sala?->paciente?->delete();
+        $this->sala?->reportes()->delete();
         $this->dispatch('datachange');
     }
 

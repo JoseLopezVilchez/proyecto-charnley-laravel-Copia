@@ -25,6 +25,6 @@ class Report extends Model
     }
     public function sala()
     {
-        return $this->belongsTo(Sala::class, 'id_sala');
+        return $this->belongsTo(Sala::class, 'id_sala')->withTrashed();
     }
 }

@@ -115,4 +115,10 @@
             <button>close</button>
         </form>
     </dialog> <!-- ----------------------------------------------------------- -->
+
+    <script>
+        window.addEventListener('datachange', () => {
+            window.location.reload();
+        });
+    </script>
 </div>
